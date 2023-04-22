@@ -11,11 +11,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
           value: data,
         });
       });
+      return responseArr;
     })
-    .catch((error) => {
-      [{
-        "status": "rejected",
-        value: error
-      }]
-    });
+    .catch((error) => [{
+      status: 'rejected',
+      value: error,
+    }]);
 }
