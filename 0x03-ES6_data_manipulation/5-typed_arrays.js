@@ -6,5 +6,5 @@ export default function createInt8TypedArray(bufferLength, position, value) {
     throw new Error('Position outside range');
   }
   int8View[position] = value;
-  return buffer;
+  return int8View;
 }
