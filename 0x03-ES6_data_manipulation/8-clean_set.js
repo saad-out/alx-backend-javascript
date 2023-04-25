@@ -10,7 +10,7 @@ export default function cleanSet(set, startString) {
       if (returnString !== '') {
         returnString += '-';
       }
-      returnString += string.slice(startStringLength);
+      returnString += string.slice(startStringLength, string.length);
     }
   });
   return returnString;
