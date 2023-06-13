@@ -7,14 +7,14 @@ function countStudents(path) {
 
     let numberOfStudents = 0;
     const fields = {};
-    for (let i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i += 1) {
       if (lines[i] !== '') {
-        numberOfStudents++;
-        const data = lines[i].split(',');
-        const firstName = data[0];
-        const field = data[3];
+        numberOfStudents += 1;
+        const row = lines[i].split(',');
+        const firstName = row[0];
+        const field = row[3];
         if (field in fields) {
-          fields[field].count++;
+          fields[field].count += 1;
           fields[field].names.push(firstName);
         } else {
           fields[field] = {
@@ -24,10 +24,11 @@ function countStudents(path) {
         }
       }
     }
-    console.log(`Number of students: ${numberOfStudents}`);
-    for (field in fields) {
-      console.log(`Number of students in ${field}: ${fields[field].count}. List: ${fields[field].names.join(', ')}`);
-    }
+    process.stdout.write(`Number of students: ${numberOfStudents}\n`);
+    Object.keys(fields).forEach((field) => {
+      const { count, names } = fields[field];
+      process.stdout.write(`Number of students in ${field}: ${count}. List: ${names.join(', ')}\n`);
+    });
   } catch (err) {
     throw new Error('Cannot load the database');
   }
