@@ -24,9 +24,9 @@ function countStudents(path) {
         }
       }
     }
-    process.stdout.write(`Number of students: ${numberOfStudents}\n`);
+    console.log(`Number of students: ${numberOfStudents}`);
     for (field in fields) {
-      process.stdout.write(`Number of students in ${field}: ${fields[field].count}. List: ${fields[field].names.join(', ')}\n`);
+      console.log(`Number of students in ${field}: ${fields[field].count}. List: ${fields[field].names.join(', ')}`);
     }
   } catch (err) {
     throw new Error('Cannot load the database');
