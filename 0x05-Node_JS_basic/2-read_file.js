@@ -14,20 +14,16 @@ function countStudents(path) {
         const firstName = row[0];
         const field = row[3];
         if (field in fields) {
-          fields[field].count += 1;
-          fields[field].names.push(firstName);
+          fields[field].push(firstName);
         } else {
-          fields[field] = {
-            count: 1,
-            names: [firstName],
-          };
+          fields[field] = [firstName];
         }
       }
     }
     console.log(`Number of students: ${numberOfStudents}`);
-    for (field in fields) {
-      console.log(`Number of students in ${field}: ${fields[field].count}. List: ${fields[field].names.join(', ')}`);
-    }
+    Object.keys(fields).forEach((field) => {
+      console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+    });
   } catch (err) {
     throw new Error('Cannot load the database');
   }
