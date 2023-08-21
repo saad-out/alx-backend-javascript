@@ -31,7 +31,7 @@ async function countStudents(path) {
     const data = await fs.readFile(path, { encoding: 'utf-8' });
     const students = getStudents(data);
     let message;
-    message = `\nNumber of students: ${students.length}`;
+    message = `Number of students: ${students.length}`;
     const fields = countFields(students);
     Object.keys(fields).forEach((field) => {
       message += `\nNumber of students in ${field}: ${fields[field].length}. `;
@@ -49,7 +49,7 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
-    let message = 'This is the list of our students';
+    let message = 'This is the list of our students\n';
     countStudents(process.argv[2])
       .then((students) => {
         message += students;
