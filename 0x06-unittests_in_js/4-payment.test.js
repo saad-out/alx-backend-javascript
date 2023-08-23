@@ -10,8 +10,8 @@ describe('sendPaymentRequestToApi', function() {
     Utils.calculateNumber = sinon.stub(Utils, 'calculateNumber').returns(10);
     console.log = sinon.spy();
     sendPaymentRequestToApi(100, 20);
-    expect(Utils.calculateNumber.calledOnceWithExactly('SUM', 100, 20));
-    expect(console.log.calledOnceWithExactly('The total is: 10'));
+    expect(Utils.calculateNumber.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
+    expect(console.log.calledOnceWithExactly('The total is: 10')).to.be.true;
     Utils.calculateNumber = calculateNumberOriginal;
     console.log = consoleLogOriginal;
   })
