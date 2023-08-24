@@ -22,7 +22,7 @@ describe('sendPaymentRequestToApi', function() {
     console.log = sinon.spy();
     sendPaymentRequestToApi(100, 20);
     expect(Utils.calculateNumber.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
-    // expect(console.log.calledOnceWithExactly('The total is: 120')).to.be.true;
+    expect(console.log.calledOnce).to.be.true;
   })
 
   it('validate called with 10 and 10', function () {
@@ -30,6 +30,6 @@ describe('sendPaymentRequestToApi', function() {
     console.log = sinon.spy();
     sendPaymentRequestToApi(10, 10);
     expect(Utils.calculateNumber.calledOnceWithExactly('SUM', 10, 10)).to.be.true;
-    // expect(console.log.calledOnceWithExactly('The total is: 20')).to.be.true;
+    expect(console.log.calledOnce).to.be.true;
   })
 })
